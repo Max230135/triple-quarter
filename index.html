@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Triple Quarter - Entrance</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+    input {
+      padding: 10px;
+      width: 90%;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #errorMessage {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome to Triple Quarter</h2>
+    <p>Enter Access Code to Continue</p>
+    <input type="password" id="codeInput" placeholder="Enter code">
+    <br>
+    <button onclick="checkCode()">Enter</button>
+    <p id="errorMessage"></p>
+  </div>
+
+  <script>
+    function checkCode() {
+      const correctCode = "23GB11";
+      const input = document.getElementById("codeInput").value;
+      if (input === correctCode) {
+        window.location.href = "home.html"; // Replace with your real homepage file
+      } else {
+        document.getElementById("errorMessage").textContent = "❌ Incorrect code. Try again.";
+      }
+    }
+  </script>
+</body>
+</html>
