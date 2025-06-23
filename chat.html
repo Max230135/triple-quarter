@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Triple Quarter Chat</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f1f1f1; margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh; }
+    header { background: #2196f3; color: white; padding: 1rem; text-align: center; }
+    .chat-container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 1rem; }
+    .chat-box {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 1rem;
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      height: 80vh;
+    }
+    #messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .message {
+      max-width: 75%;
+      padding: 0.6rem 1rem;
+      border-radius: 20px;
+      animation: slideIn 0.3s ease forwards;
+    }
+    .from-me {
+      background: #2196f3;
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 0;
+    }
+    .from-others {
+      background: #e0e0e0;
+      align-self: flex-start;
+      border-bottom-left-radius: 0;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    form {
+      display: flex;
+      gap: 0.5rem;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>💬 Triple Quarter Chat (Offline)</h2>
+    <p>Only logged-in users can chat</p>
+  </header>
+  <div class="chat-container">
+    <div class="chat-box">
+      <div id="messages"></div>
+      <form onsubmit="sendMessage(event)">
+        <input type="text" id="messageInput" placeholder="Type a message..." required />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+  <script src="account.js"></script>
+  <script src="chat-bubbles.js"></script>
+</body>
+</html>
