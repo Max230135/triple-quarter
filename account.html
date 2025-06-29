@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Account - Triple Quarter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f3ec78, #af4261);
+      background-size: 400% 400%;
+      animation: gradientGlow 60s ease infinite;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    @keyframes gradientGlow {
+      0% { background: linear-gradient(135deg, #f3ec78, #af4261); }
+      25% { background: linear-gradient(135deg, #af4261, #42a5f5); }
+      50% { background: linear-gradient(135deg, #42a5f5, #66bb6a); }
+      75% { background: linear-gradient(135deg, #66bb6a, #ff7043); }
+      100% { background: linear-gradient(135deg, #f3ec78, #af4261); }
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 350px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #2196f3;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    #preview {
+      margin-top: 10px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Create Your Account</h2>
+    <input type="text" id="name" placeholder="Name" />
+
+    <select id="method" onchange="toggleFields()">
+      <option value="">Choose Login Method</option>
+      <option value="phone">Phone Number</option>
+      <option value="gmail">Gmail</option>
+    </select>
+
+    <input type="text" id="phone" placeholder="Phone Number" style="display:none;" />
+    <input type="email" id="gmail" placeholder="Gmail" style="display:none;" />
+
+    <button onclick="sendCode()">Send Verification Code</button>
+
+    <input type="text" id="verification" placeholder="Enter verification code" style="display:none;" />
+
+    <input type="password" id="password" placeholder="Password" />
+    <input type="file" id="profilePic" accept="image/*" onchange="previewPic()" />
+    <img id="preview" alt="Preview" />
+
+    <button onclick="submitForm()">Create Account</button>
+  </div>
+
+  <script>
+    function toggleFields() {
+      const method = document.getElementById('method').value;
+      document.getElementById('phone').style.display = method === 'phone' ? 'block' : 'none';
+      document.getElementById('gmail').style.display = method === 'gmail' ? 'block' : 'none';
+    }
+
+    function sendCode() {
+      alert('Mock code sent! (This is where Firebase or backend code goes)');
+      document.getElementById('verification').style.display = 'block';
+    }
+
+    function previewPic() {
+      const file = document.getElementById('profilePic').files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const preview = document.getElementById('preview');
+          preview.src = e.target.result;
+          preview.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function submitForm() {
+      const name = document.getElementById('name').value;
+      const verification = document.getElementById('verification').value;
+      const password = document.getElementById("password").value;
+      if (name && verification && password) {
+        alert('Account created (mock)!');
+      } else {
+        alert('Please fill all required fields.');
+      }
+    }
+  </script>
+</body>
+</html>
