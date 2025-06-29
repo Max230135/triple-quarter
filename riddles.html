@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily Riddle - Triple Quarter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f3ec78, #af4261);
+      background-size: 400% 400%;
+      animation: gradientGlow 60s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    @keyframes gradientGlow {
+      0% { background: linear-gradient(135deg, #f3ec78, #af4261); }
+      25% { background: linear-gradient(135deg, #af4261, #42a5f5); }
+      50% { background: linear-gradient(135deg, #42a5f5, #66bb6a); }
+      75% { background: linear-gradient(135deg, #66bb6a, #ff7043); }
+      100% { background: linear-gradient(135deg, #f3ec78, #af4261); }
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 1rem 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #response {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🧠 Daily Riddle</h2>
+    <p id="riddleText">I speak without a mouth and hear without ears. I have nobody, but I come alive with the wind. What am I?</p>
+    <input type="text" id="answerInput" placeholder="Your answer..." />
+    <button onclick="checkAnswer()">Submit</button>
+    <div id="response"></div>
+  </div>
+
+  <script>
+    const correctAnswer = "echo";
+
+    function checkAnswer() {
+      const input = document.getElementById("answerInput").value.trim().toLowerCase();
+      const response = document.getElementById("response");
+      if (input === correctAnswer) {
+        response.textContent = "✅ Correct! Come back tomorrow for a new riddle.";
+      } else {
+        response.textContent = "❌ Try again!";
+      }
+    }
+  </script>
+</body>
+</html>
