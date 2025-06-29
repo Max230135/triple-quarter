@@ -2,19 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Daily Riddle - Triple Quarter</title>
+  <title>Triple Quarter - Daily Riddle</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
       background: linear-gradient(135deg, #f3ec78, #af4261);
       background-size: 400% 400%;
       animation: gradientGlow 60s ease infinite;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      color: #333;
     }
 
     @keyframes gradientGlow {
@@ -25,14 +22,27 @@
       100% { background: linear-gradient(135deg, #f3ec78, #af4261); }
     }
 
+    nav {
+      background: #1976d2;
+      padding: 0.5rem;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
+
     .container {
       background: white;
+      margin: 3rem auto;
       padding: 2rem;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       text-align: center;
       max-width: 400px;
-      width: 100%;
     }
 
     h2 {
@@ -41,7 +51,6 @@
 
     p {
       font-size: 1.1rem;
-      color: #333;
     }
 
     input {
@@ -65,17 +74,26 @@
     #response {
       margin-top: 1rem;
       font-weight: bold;
-      color: green;
     }
   </style>
 </head>
 <body>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="leaderboard.html">Leaderboard</a>
+    <a href="account.html">Account</a>
+    <a href="riddles.html">Riddles</a>
+  </nav>
+
   <div class="container">
     <h2>🧠 Daily Riddle</h2>
     <p id="riddleText">I speak without a mouth and hear without ears. I have nobody, but I come alive with the wind. What am I?</p>
     <input type="text" id="answerInput" placeholder="Your answer..." />
     <button onclick="checkAnswer()">Submit</button>
     <div id="response"></div>
+    <p style="margin-top: 1rem; font-size: 0.9rem; color: #777;">Riddle updates every 24 hours</p>
   </div>
 
   <script>
@@ -86,10 +104,13 @@
       const response = document.getElementById("response");
       if (input === correctAnswer) {
         response.textContent = "✅ Correct! Come back tomorrow for a new riddle.";
+        response.style.color = "green";
       } else {
         response.textContent = "❌ Try again!";
+        response.style.color = "red";
       }
     }
   </script>
+
 </body>
 </html>
