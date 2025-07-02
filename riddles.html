@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Triple Quarter - Daily Riddle</title>
+  <title>Daily Riddle - Triple Quarter</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -89,7 +89,7 @@
 
   <div class="container">
     <h2>🧠 Daily Riddle</h2>
-    <p id="riddleText">I speak without a mouth and hear without ears. I have nobody, but I come alive with the wind. What am I?</p>
+    <p id="riddleText">Loading...</p>
     <input type="text" id="answerInput" placeholder="Your answer..." />
     <button onclick="checkAnswer()">Submit</button>
     <div id="response"></div>
@@ -97,12 +97,25 @@
   </div>
 
   <script>
-    const correctAnswer = "echo";
+    const riddles = [
+      { question: "I speak without a mouth and hear without ears. What am I?", answer: "echo" },
+      { question: "What has hands but cannot clap?", answer: "clock" },
+      { question: "What can travel around the world while staying in one spot?", answer: "stamp" },
+      { question: "What has keys but can't open locks?", answer: "piano" },
+      { question: "What gets wetter the more it dries?", answer: "towel" },
+      { question: "What has to be broken before you can use it?", answer: "egg" },
+      { question: "I’m tall when I’m young and short when I’m old. What am I?", answer: "candle" }
+    ];
+
+    const today = new Date();
+    const dayIndex = today.getDate() % riddles.length;
+    const currentRiddle = riddles[dayIndex];
+    document.getElementById("riddleText").textContent = currentRiddle.question;
 
     function checkAnswer() {
       const input = document.getElementById("answerInput").value.trim().toLowerCase();
       const response = document.getElementById("response");
-      if (input === correctAnswer) {
+      if (input === currentRiddle.answer) {
         response.textContent = "✅ Correct! Come back tomorrow for a new riddle.";
         response.style.color = "green";
       } else {
